@@ -19,6 +19,7 @@ void printBoard(char board[3][3])
 	printf("-------------\n");
 	printf("C| %1$c | %2$c | %3$c \n", board[2][0], board[2][1], board[2][2]);
 	printf("\n");
+	
 }
 
 bool placeLogic(char move[2], char piece)
