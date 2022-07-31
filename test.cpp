@@ -19,60 +19,25 @@ void printBoard(char board[3][3]) {
 }
 
 bool placeLogic(char move[2], char piece) {
-  switch (toupper(move[0])) {
-  case 'A':
-    if (move[1] - '0' - 1 > 3) {
-      printf("INVALID MOVE, please try again!\n");
-      return false;
-    }
 
-    if (x[0][move[1] - '0' - 1] == ' ') {
-      x[0][move[1] - '0' - 1] = piece;
-      return true;
-    } else {
-      printf("INVALID MOVE, please try again!\n");
-      return false;
-    }
-
-  case 'B':
-    if (move[1] - '0' - 1 > 3) {
-      printf("INVALID MOVE, please try again!\n");
-      return false;
-    }
-    if (x[1][move[1] - '0' - 1] == ' ') {
-      x[1][move[1] - '0' - 1] = piece;
-      return true;
-    } else {
-      printf("INVALID MOVE, please try again!\n");
-      return false;
-    }
-
-    break;
-
-  case 'C':
-    if (move[1] - '0' - 1 > 3) {
-      printf("INVALID MOVE, please try again!\n");
-      return false;
-    }
-    if (x[2][move[1] - '0' - 1] == ' ') {
-      x[2][move[1] - '0' - 1] = piece;
-      return true;
-    } else {
-      printf("INVALID MOVE, please try again!\n");
-      return false;
-    }
-    break;
-
-  case 'E':
-    exit(0);
-    break;
-
-  default:
-    break;
+  if (toupper(move[0]) - 'A' > 3) {
+    printf("INVALID MOVE, please try again!\n");
+    return false;
   }
 
-  printf("INVALID MOVE, please try again!\n");
-  return false;
+  if (move[1] - '0' - 1 > 3) {
+    printf("INVALID MOVE, please try again!\n");
+    return false;
+  }
+
+  if (x[toupper(move[0]) - 'A'][move[1] - '0' - 1] == ' ') {
+    x[toupper(move[0]) - 'A'][move[1] - '0' - 1] = piece;
+    return true;
+  } else {
+    printf("INVALID MOVE, please try again!\n");
+    return false;
+  }
+
 }
 
 bool isGameWon() {
@@ -101,7 +66,7 @@ bool isGameWon() {
 int main() {
   char scanmove[10];
   char piece = 'x';
-  printf("Welcome to shitty tic tac toe:\n");
+  printf("Welcome to shitty tic tac toe:\n\n");
   printBoard(x);
   for (int i = 0; i < 9; i++) {
   PLACE_ATTEMPT:
