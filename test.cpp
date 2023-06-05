@@ -1,5 +1,4 @@
 #include <ctype.h>
-#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -8,13 +7,13 @@ char x[3][3] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
 void printBoard(char board[3][3]) {
   // first line
   printf("   1   2   3\n");
-  printf("A| %1$c | %2$c | %3$c \n", board[0][0], board[0][1], board[0][2]);
+  printf("A| %1c | %2c | %3c \n", board[0][0], board[0][1], board[0][2]);
   // 2nd line
   printf("-------------\n");
-  printf("B| %1$c | %2$c | %3$c \n", board[1][0], board[1][1], board[1][2]);
+  printf("B| %1c | %2c | %3c \n", board[1][0], board[1][1], board[1][2]);
   // 3rd line
   printf("-------------\n");
-  printf("C| %1$c | %2$c | %3$c \n", board[2][0], board[2][1], board[2][2]);
+  printf("C| %1c | %2c | %3c \n", board[2][0], board[2][1], board[2][2]);
   printf("\n");
 }
 
@@ -70,7 +69,7 @@ int main() {
   printBoard(x);
   for (int i = 0; i < 9; i++) {
   PLACE_ATTEMPT:
-    printf("%1$c: Where do you want to place? (eg: B2) ", piece);
+    printf("%1c: Where do you want to place? (eg: B2) ", piece);
     scanf("%s", scanmove);
     printf("\n");
 
@@ -79,7 +78,7 @@ int main() {
     }
     printBoard(x);
     if (isGameWon()) {
-      printf("%1$c WON!\n", piece);
+      printf("%1c WON!\n", piece);
       exit(0);
     }
     if (piece == 'x')
